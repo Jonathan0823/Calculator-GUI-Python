@@ -124,12 +124,16 @@ class Calculator(QWidget):
             self.answer_line.setText(self.answer_line.text() + self.sender().text())
     
     def evaluate(self):
-        if self.answer_line.text() == "9/11":
-            self.answer_line.setText(f"✈️🏢🏢")
-        else:
-            self.answer_line.setText(f"{eval(self.answer_line.text())}")
-        if self.answer_line.text() == "":
-            return
+        try:
+            if self.answer_line.text() == "9/11":
+                self.answer_line.setText(f"✈️🏢🏢")
+            else:
+                self.answer_line.setText(f"{eval(self.answer_line.text())}")
+            if self.answer_line.text() == "":
+                return
+        except:
+            self.answer_line.setText("Error")
+            
 
 
     def clear(self):
